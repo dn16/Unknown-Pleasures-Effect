@@ -13,12 +13,12 @@ git clone https://github.com/dn16/Unknown-Pleasures-Effect Unknown-Pleasures-Eff
 cd Unknown-Pleasures-Effect
 rm -rf .git
 pipenv install
-cd frontend
+cd client
 npm install
 ```
 
 ## Script usage
-### frontend
+### client
 ```bash
 # development
 npm run dev
