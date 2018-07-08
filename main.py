@@ -73,14 +73,14 @@ def send():
         if img_file and allowed_file(img_file.filename):
             filename = secure_filename(img_file.filename)
             img_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
+            
+            # change save file name
             splitName = filename.split('.')
             changeName = splitName[0] + '_glitch'
             splitName[0] = changeName
             splitName.insert(1, '.')
             newName = ''.join(splitName)
             
-            # change save file name
             source = Image.open(img_file)
             img = source.load()
             print(source.format)
@@ -116,7 +116,7 @@ def send():
                         k=0
 
                         j=j+1
-                        print(j, "/",y)
+                        # print(j, "/",y)
                         if j==y:
                             l1=0
 

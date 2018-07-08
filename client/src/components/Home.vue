@@ -86,7 +86,7 @@ export default {
       this.selectedFile = event.target.files[0]
     },
     onSubmit: function () {
-      const path = 'http://localhost:8080/send'
+      const path = '/send'
       const form = document.querySelector('form')
       const formData = new FormData(form)
       const imageFile = document.querySelector('#img_file')

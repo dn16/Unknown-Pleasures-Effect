@@ -8,6 +8,6 @@ __pycache__/
 *.pyc
 /static/image/save/*
 /static/image/uploads/*
-app.yaml
 !.gitkeep
+app.yaml
 .travis.yml
