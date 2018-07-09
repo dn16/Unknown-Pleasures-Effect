@@ -5,7 +5,7 @@
 |------------------|-----------|
 |CSS| [Materialize](https://materializecss.com/)|
 |JS|[Vue.js](https://vuejs.org/index.html), [Webpack](https://webpack.js.org/), [Babel](http://babeljs.io/)|
-|Python|[Flask](http://flask.pocoo.org/), [OpenCV](https://opencv.org/)|
+|Python|[Flask](http://flask.pocoo.org/), [Pillow](https://pillow.readthedocs.io/en/5.2.x/)|
 
 ## Development
 ```
