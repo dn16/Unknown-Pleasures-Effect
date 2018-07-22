@@ -30,7 +30,7 @@ npm run build
 ### backend
 ```bash
 # development
-python3 main.py
+python3 app.py
 # or
 pipenv run start
 ```

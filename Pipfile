@@ -12,7 +12,7 @@ gunicorn = "==19.7.1"
 [dev-packages]
 
 [scripts]
-start = "python3 main.py"
+start = "python3 app.py"
 
 [requires]
 python_version = "3.6"
