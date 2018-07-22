@@ -24,6 +24,16 @@
           </button>
         </div>
       </div>
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <label for="upload">Upload progress</label>
+          <progress id="upload" max="100" :value.prop="uploadPercentage"></progress>
+        </div>
+        <div class="col s12 m6 l6">
+          <label for="download">Download progress</label>
+          <progress id="download" max="100" :value.prop="downloadPercentage"></progress>
+        </div>
+      </div>
     </form>
     <div class="row">
       <div class="col s12 m12 l6">
@@ -64,6 +74,9 @@ $title-color: #2c3e50;
 .img__name {
   word-wrap: break-word;
 }
+progress {
+  width: 100%;
+}
 </style>
 
 <script>
@@ -73,6 +86,8 @@ export default {
   name: 'Home',
   data () {
     return {
+      uploadPercentage: 0,
+      downloadPercentage: 0,
       uploadsPath: '',
       savePath: '',
       uploadsName: '',
@@ -85,7 +100,9 @@ export default {
     onFileChanged (event) {
       this.selectedFile = event.target.files[0]
     },
-    onSubmit: function () {
+    onSubmit: function (event) {
+      const inputLength = event.target[0].files.length
+      if (inputLength === 0) { return }
       const path = '/send'
       const form = document.querySelector('form')
       const formData = new FormData(form)
@@ -94,19 +111,22 @@ export default {
       const config = {
         headers: {
           'content-type': 'multipart/form-data'
+        },
+        onUploadProgress: progressEvent => {
+          this.uploadPercentage = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+          // console.log(progressEvent.loaded)
+          // let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+        },
+        onDownloadProgress: progressEvent => {
+          this.downloadPercentage = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+          // console.log(progressEvent.loaded)
         }
       }
       const formDataName = formData.get('img_file').name
-      axios.post(path, formData, config, {
-        onUploadProgress: progressEvent => {
-          let percentCompleted = Math.floor((progressEvent.loaded * 100) / progressEvent.total)
-          // let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-          console.log(percentCompleted)
-          // fn(percentCompleted);
-        }
-      })
+      console.log('読み込み!!!!!!!')
+      const startTime = new Date().getTime()
+      axios.post(path, formData, config)
         .then(response => {
-          console.log(response)
           console.log(response.data)
           this.error = ''
           if (response.data !== 'File extension not allowed') {
@@ -120,15 +140,18 @@ export default {
           if (this.uploadsName !== '') {
             this.visible = true
           }
+          const requestTime = new Date().getTime() - startTime
+          console.log(requestTime)
+          console.log('SUCCESS!!')
         })
         .catch(error => {
-          console.log(error)
           console.log(error.data)
           this.uploadsPath = ''
           this.savePath = ''
           this.name = ''
           this.visible = false
           this.error = 'uploaded image file size should be less than 3MB'
+          console.log('FAILURE!!')
         })
     }
   }

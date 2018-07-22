@@ -34,3 +34,11 @@ python3 main.py
 # or
 pipenv run start
 ```
+
+## Deploy
+```bash
+# deploy
+gcloud app deploy
+# browse
+gcloud app browse
+```

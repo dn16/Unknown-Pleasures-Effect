@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import NProgress from 'nprogress'
 
 Vue.config.productionTip = false
 

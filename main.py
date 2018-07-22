@@ -1,10 +1,12 @@
 # coding: UTF-8
 import os
 import werkzeug
+import time
 
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, session, jsonify, send_file
 from werkzeug import secure_filename
 from PIL import Image, ImageFilter
+# from tqdm import tqdm
 
 app = Flask(__name__,
             static_folder = './dist/static',
@@ -117,9 +119,12 @@ def send():
 
                         j=j+1
                         # print(j, "/",y)
+
                         if j==y:
                             l1=0
-
+            # print(j)
+            # for i in tqdm(range(j)):
+            #     time.sleep(0.0005)
             source.save(os.path.join(app.config['SAVE_FOLDER'], newName), quality=100)
 
             # return render_template('index.html')
