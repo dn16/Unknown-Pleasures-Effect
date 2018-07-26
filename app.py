@@ -92,7 +92,6 @@ def send():
             #     time.sleep(0.0005)
             source.save(os.path.join(app.config['SAVE_FOLDER'], newName), quality=100)
 
-            # return render_template('index.html')
             return newName
 
         else:
