@@ -24,16 +24,6 @@
           </button>
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col s12 m6 l6">
-          <label for="upload">Upload progress</label>
-          <progress id="upload" max="100" :value.prop="uploadPercentage"></progress>
-        </div>
-        <div class="col s12 m6 l6">
-          <label for="download">Download progress</label>
-          <progress id="download" max="100" :value.prop="downloadPercentage"></progress>
-        </div>
-      </div> -->
     </form>
     <div class="row">
       <div class="col s12 m12 l6">
@@ -113,16 +103,6 @@ export default {
         headers: {
           'content-type': 'multipart/form-data'
         }
-        // onUploadProgress: progressEvent => {
-        //   if (this.uploadPercentage !== 0) {
-        //     this.uploadPercentage = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-        //   }
-        // },
-        // onDownloadProgress: progressEvent => {
-        //   if (this.downloadPercentage !== 0) {
-        //     this.downloadPercentage = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-        //   }
-        // }
       }
       const formDataName = formData.get('img_file').name
       // const startTime = new Date().getTime()
