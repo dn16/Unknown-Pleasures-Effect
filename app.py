@@ -1,10 +1,10 @@
 # coding: UTF-8
 import os
 import werkzeug
-import time
+# import time
 import image_processing
 
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory, session, jsonify, send_file
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file, jsonify
 from werkzeug import secure_filename
 from PIL import Image, ImageFilter
 # from tqdm import tqdm
@@ -26,11 +26,10 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return render_template("index.html")
 
 @app.route('/send', methods=['GET', 'POST'])
 def send():
@@ -117,4 +116,4 @@ def save_file(filename):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=3000, debug=True)

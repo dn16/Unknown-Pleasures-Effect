@@ -9,5 +9,5 @@ __pycache__/
 /static/image/save/*
 /static/image/uploads/*
 !.gitkeep
-app.yaml
+# app.yaml
 .travis.yml

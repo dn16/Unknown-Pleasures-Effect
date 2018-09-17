@@ -1,0 +1,47 @@
+# runtime: python-compat
+# env: flex
+# entrypoint: gunicorn -b :$PORT app:app
+
+# runtime_config:
+#    python_version: 3
+
+# api_version: 1
+# threadsafe: true
+
+# # entrypoint: python main.py
+
+# handlers:
+# - url: /dist
+#  static_dir: dist
+# - url: /.*
+#  script: app.app
+
+# manual_scaling:
+#  instances: 1
+
+# resources:
+#  cpu: 1
+#  memory_gb: 0.5
+#  disk_size_gb: 10
+
+# beta_settings:
+#  enable_app_engine_apis: true
+
+# libraries:
+# - name: ssl
+#   version: latest
+
+
+ runtime: python
+ env: flex
+ entrypoint: gunicorn -b :$PORT app:app
+
+ runtime_config:
+   python_version: 3
+
+ manual_scaling:
+   instances: 1
+ resources:
+   cpu: 1
+   memory_gb: 0.5
+   disk_size_gb: 10
